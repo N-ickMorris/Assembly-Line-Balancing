@@ -1,0 +1,10 @@
+reset;
+model LineBal.mod;
+data LineBal.dat;
+option solver cplex;
+solve;
+display x;
+let Efficiency := num/(max{t in T,s in S}(s*x[t,s])*CT);
+display Efficiency;
+let Percent_Idle_Time := 1-Efficiency;
+display Percent_Idle_Time;
